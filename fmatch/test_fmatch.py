@@ -6,7 +6,6 @@ import sys
 import pandas as pd
 # pylint: disable=import-error
 from matcher import Matcher
-import json
 
 match = Matcher(index='perf_scale_ci')
 
