@@ -6,6 +6,7 @@ import sys
 import pandas as pd
 # pylint: disable=import-error
 from matcher import Matcher
+import json
 
 match = Matcher(index='perf_scale_ci')
 
@@ -19,6 +20,9 @@ meta['workerNodesCount'] = 24
 meta['jobStatus'] = "success"
 meta['ocpVersion'] = '4.15'
 meta['networkType'] = "OVNKubernetes"
+meta['encrypted'] = "true"
+meta['ipsec'] = "false"
+meta['fips'] = "false"
 
 uuids = match.get_uuid_by_metadata(meta)
 if len(uuids) == 0:
@@ -49,4 +53,4 @@ ls = df["uuid"].to_list()
 # Check merged csv data - Debug
 for i in ls:
     # Debug - Ensure they are all using the same networkType
-    print(match.get_metadata_by_uuid(i)["networkType"])
+    print(match.get_metadata_by_uuid(i)['networkType'])
